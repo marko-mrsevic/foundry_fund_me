@@ -1,66 +1,55 @@
-## Foundry
+# foundry_fund_me
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Introduction
+`foundry_fund_me` is a decentralized application built using Foundry, designed to facilitate crowdfunding through smart contracts. This project demonstrates the use of Solidity for creating secure and efficient smart contracts, along with scripts and tests to ensure reliability and functionality.
 
-Foundry consists of:
+## Features
+- **Smart Contracts**: Secure and transparent crowdfunding logic.
+- **Scripts**: Deployment and interaction scripts for ease of use.
+- **Testing**: Comprehensive test suite to ensure contract correctness and reliability.
+- **Gas Optimization**: Efficient contract design to minimize transaction costs.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Getting Started
+This project is designed for developers familiar with Solidity and Foundry. Follow the instructions below to set up and run the project locally.
 
-## Documentation
-
-https://book.getfoundry.sh/
+## Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/marko-mrsevic/foundry_fund_me.git
+    cd foundry_fund_me
+    ```
+2. Install Foundry:
+    ```bash
+    curl -L https://foundry.paradigm.xyz | bash
+    foundryup
+    ```
+3. Install dependencies:
+    ```bash
+    forge install
+    ```
 
 ## Usage
+1. Compile the smart contracts:
+    ```bash
+    forge build
+    ```
+2. Deploy the contracts using the provided scripts:
+    ```bash
+    forge script script/DeployFundMe.s.sol --rpc-url <YOUR_RPC_URL> --private-key <YOUR_PRIVATE_KEY> --broadcast
+    ```
+3. Alternatively, use the custom Makefile commands to simplify deployment for Anvil and [Tenderly](https://tenderly.co). Just create a .env file in the root directory and specify your credentials:
 
-### Build
+    ```bash
+    make deploy     # Deploy locally using Anvil
+    make deploy-tenderly
+    ```  
+4. Interact with the deployed contracts using the scripts or a frontend of your choice.
 
-```shell
-$ forge build
+## Testing
+Run the test suite to ensure the contracts work as expected:
+```bash
+forge test
 ```
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## License
+This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/licenses/MIT) file for details.
